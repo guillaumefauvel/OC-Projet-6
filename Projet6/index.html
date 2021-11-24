@@ -4,6 +4,10 @@
         <meta charset="UTF-8">
         <title>JustStreamIt!</title>
         <link rel="stylesheet" href="css/style.css">
+
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
     </head>
 
     <body>
@@ -46,6 +50,28 @@
         </section> 
 
         <footer>
+            <div id="app">
+                <button v-on:click="updatePost()"> Mettre à jour</button>
+                <ul>
+                    <li v-for="post in posts">{{ post }}</li>
+                </ul>
+            </div>
+        
+            <script>
+
+                var app = new Vue({
+                    el: '#app',
+                    data:{
+                        posts: ["post 1", "post 2", "post 3"]
+                    },
+                    methods: {
+                        updatePost(){
+                            axios.get('http://localhost:8000/api/v1/titles/?year=1999&min_year=&max_year=&imdb_score=&imdb_score_min=&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains=').then( reponse => this.posts = reponse.data).catch(erreur => console.log(erreur));
+                        }
+                    }
+                }
+                )
+            </script>
 
         </footer>
 
