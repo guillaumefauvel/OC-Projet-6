@@ -1,36 +1,11 @@
 
 
-let baseURL = "http://localhost:8000/api/v1/titles/?imdb_score=&imdb_score_min=9.4"
+const baseURL = "http://localhost:8000/api/v1/titles/?imdb_score=&imdb_score_min=9.3" //URL TO MODIFY
+const ninetiesURL = "http://localhost:8000/api/v1/titles/?min_year=1990&max_year=1999&imdb_score=&imdb_score_min=8.8"
+const nicolasCageURL = "http://localhost:8000/api/v1/titles/?imdb_score=&imdb_score_min=7.3&actor=Nicolas+Cage&actor_contains="
+const adventureURL = "http://localhost:8000/api/v1/titles/?genre=&genre_contains=adventure&imdb_score=&imdb_score_min=8.6"
 
-
-function getData(url) {
-    // Modify a html paragraph with the movie titles of a page
-    
-axios.get(url)
-.then(function (response) {
-
-    console.log(response);
-    
-    let films = Object.values(response)[0]['results'];
-    console.log(Object.values(response)[0]['results'].length);
-    console.log(Object.values(response)[0]['next']);
-
-    let filmNames = []
-    for (key in films) {
-        filmNames.push(films[key]["title"])
-    }
-    
-    document.getElementById("demo").innerHTML = filmNames;
-
-    return response
-})
-.catch(function (error) {
-    console.log(error);
-})
-.then(function () {
-});
-
-}       
+let alreadyShownFilm = []
 
 
 async function getLinksPages(url) {
@@ -54,13 +29,12 @@ async function getLinksPages(url) {
  }
 }
 
-
 async function getFilmsContent(getLinksPages) {
     // Get the films json datas
     // Arg : The getLinksPages function (containing array of URL)
     // Return : An array containing films as json datas
 
-    let linksArray = await getLinksPages
+    const linksArray = await getLinksPages
     let ContentArray = []
 
     for (page in linksArray) {
@@ -77,25 +51,62 @@ async function getFilmsContent(getLinksPages) {
 async function returnBestFilm(getFilmsContent) {
     // Return the best film based on two criteria, the
     // imdb score and the number of votes
-    // Arg : The getfilmsContent function
-    // Return : The best film, type : json
+    // Arg : The getfilmsContent function ( Array of films in json format)
+    // Return : The best film, format : json
 
 
     let filmsArray = await getFilmsContent
-    let bestFilms = filmsArray[0]
+    let bestFilm = filmsArray[0]
 
     for (film in filmsArray) {
-        if (filmsArray[film]["imdb_score"] >= bestFilms["imdb_score"] ) {
-            if (filmsArray[film]["votes"] > bestFilms["votes"] ) {
-            bestFilms = filmsArray[film]
+        if (filmsArray[film]["imdb_score"] >= bestFilm["imdb_score"] ) {
+            if (filmsArray[film]["votes"] > bestFilm["votes"] ) {
+            bestFilm = filmsArray[film]
             }
         }
     }
-    console.log(bestFilms)
+    alreadyShownFilm.push(bestFilm.title)
+
+    return bestFilm
 }
 
 
- 
+async function returnBestFilms(array) {  
+    // Return the best films 
+    // Arg : A array of films (in json format)
+    // Return : A sorted array of films (in json format)
+    let numberOffilms = 7
+    let arr = await array;
 
+    sortedarr = await arr.sort(function(a,b) {
+        return b.imdb_score - a.imdb_score;
+    })
+    let filteredArray = []
+    let index = 0 
+    while (true) {
+        if (!alreadyShownFilm.includes(sortedarr[index].title)) {
+            console.log(alreadyShownFilm)
+            alreadyShownFilm.push(sortedarr[index].title)
+            filteredArray.push(sortedarr[index])
+            index += 1
+        }
+        if (filteredArray.length == numberOffilms) { 
+            break
+        }
+        else if (alreadyShownFilm.includes(sortedarr[index].title)) {
+            index += 1 
+        }
+    }
+    return filteredArray
+}
 
+const greatFilms = getFilmsContent(getLinksPages(baseURL))
 
+const bestFilm = returnBestFilm(greatFilms)
+const bestFilms = returnBestFilms(greatFilms)
+
+const bestNinetiesFilms = returnBestFilms(getFilmsContent(getLinksPages(ninetiesURL)))
+
+const nicolasCageBestFilms = returnBestFilms(getFilmsContent(getLinksPages(nicolasCageURL)))
+
+const bestAdventureFilms = returnBestFilms(getFilmsContent(getLinksPages(adventureURL)))
