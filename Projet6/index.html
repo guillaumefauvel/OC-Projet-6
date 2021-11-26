@@ -51,10 +51,7 @@
 
         <footer>
 
-            <button onclick = "getPages(url, [url])">GetPages</button>
-            <button onclick = "ReturnPageContent(getPages(url, [url]))">ReturnPageContent</button>
-            <button onclick = "returnBestFilm(ReturnPageContent(getPages(url, [url])))">Return the best film</button>
-            <button onclick = "myPromise()">Launch it!</button>
+            <button onclick = "returnBestFilm(getFilmsContent(getLinksPages(baseURL)))">Return the best film</button>
 
         </footer>
 

@@ -1,6 +1,7 @@
 
 
-let url = "http://localhost:8000/api/v1/titles/?year=&min_year=&max_year=&imdb_score=&imdb_score_min=9.3&imdb_score_max=&title=&title_contains=&genre=&genre_contains=&sort_by=&director=&director_contains=&writer=&writer_contains=&actor=&actor_contains=&country=&country_contains=&lang=&lang_contains=&company=&company_contains=&rating=&rating_contains="
+let baseURL = "http://localhost:8000/api/v1/titles/?imdb_score=&imdb_score_min=9.4"
+
 
 function getData(url) {
     // Modify a html paragraph with the movie titles of a page
@@ -32,62 +33,69 @@ axios.get(url)
 }       
 
 
-function getPages(url, list) {
-    // We gather the page
-    let ListOfPage = list
-    if (url != null) {
-    ListOfPage.push(url);
-    
-    axios.get(url)
-    .then(function (response) {
-    let page = Object.values(response)[0]['next'];
-    console.log(page)
-    
-    getPages(page, ListOfPage)
-    })}
-    else {
-        return ListOfPage
-    }
-    return ListOfPage
-}
+async function getLinksPages(url) {
+    // Get the different page of a research
+    // Arg : A root URL
+    // Return : An array of URL
 
-function ReturnPageContent(ListOfPage) {
-    // Return an array of films contents
-    // Arg : Array of page link
 
-    listOfContent = []
-    console.log(ListOfPage)
-    for (page of ListOfPage) {
-        axios.get(page)
-        .then(function (response) {
-        for (film of (Object.values(response)[0]['results'])) {
-            listOfContent.push(film);
-            
+    let linkArray = []
+    while (true) {
+        if (Boolean(url) == true) {
+        const Res= fetch(url);
+        const response= await Res;
+        const json = await response.json();
+        linkArray.push(url)
+        url = json["next"]
         }
-        }) 
-}   
-    console.log(listOfContent)
-    return listOfContent
+        else {
+            return linkArray
+    }
+ }
 }
 
-function returnBestFilm(listOfContent) {
-    // Read the json file and return the best film
 
-    bestFilm = ""
-    bestFilmScore = 0
-    console.log(listOfContent)
-  }
+async function getFilmsContent(getLinksPages) {
+    // Get the films json datas
+    // Arg : The getLinksPages function (containing array of URL)
+    // Return : An array containing films as json datas
 
-const launch = new Promise ((resolve, reject) => {
-    let resu = ReturnPageContent(getPages(url, [url]))
-    if (resu.length > 0) {
-        return resolve(resu)
-    }else {
-        console.log("Nothing to show")
+    let linksArray = await getLinksPages
+    let ContentArray = []
+
+    for (page in linksArray) {
+        const Res= fetch(linksArray[page]);
+        const response= await Res;
+        const json = await response.json()
+        for (film in json["results"]) {
+            ContentArray.push(json["results"][film])
+        }
     }
-})
-function launchit() {
-    launch.then((result) => {
-        console.log(result)
-    })}
+    return ContentArray
+}
+
+async function returnBestFilm(getFilmsContent) {
+    // Return the best film based on two criteria, the
+    // imdb score and the number of votes
+    // Arg : The getfilmsContent function
+    // Return : The best film, type : json
+
+
+    let filmsArray = await getFilmsContent
+    let bestFilms = filmsArray[0]
+
+    for (film in filmsArray) {
+        if (filmsArray[film]["imdb_score"] >= bestFilms["imdb_score"] ) {
+            if (filmsArray[film]["votes"] > bestFilms["votes"] ) {
+            bestFilms = filmsArray[film]
+            }
+        }
+    }
+    console.log(bestFilms)
+}
+
+
+ 
+
+
 
