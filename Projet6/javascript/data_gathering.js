@@ -1,6 +1,5 @@
-
-
-const baseURL = "http://localhost:8000/api/v1/titles/?imdb_score=&imdb_score_min=9.3" //URL TO MODIFY
+//URL TO MODIFY
+const baseURL = "http://localhost:8000/api/v1/titles/?imdb_score=&imdb_score_min=9.3" 
 const ninetiesURL = "http://localhost:8000/api/v1/titles/?min_year=1990&max_year=1999&imdb_score=&imdb_score_min=8.8"
 const nicolasCageURL = "http://localhost:8000/api/v1/titles/?imdb_score=&imdb_score_min=7.3&actor=Nicolas+Cage&actor_contains="
 const adventureURL = "http://localhost:8000/api/v1/titles/?genre=&genre_contains=adventure&imdb_score=&imdb_score_min=8.6"
@@ -54,7 +53,6 @@ async function returnBestFilm(getFilmsContent) {
     // Arg : The getfilmsContent function ( Array of films in json format)
     // Return : The best film, format : json
 
-
     let filmsArray = await getFilmsContent
     let bestFilm = filmsArray[0]
 
@@ -81,11 +79,11 @@ async function returnBestFilms(array) {
     sortedarr = await arr.sort(function(a,b) {
         return b.imdb_score - a.imdb_score;
     })
+
     let filteredArray = []
     let index = 0 
     while (true) {
         if (!alreadyShownFilm.includes(sortedarr[index].title)) {
-            console.log(alreadyShownFilm)
             alreadyShownFilm.push(sortedarr[index].title)
             filteredArray.push(sortedarr[index])
             index += 1
@@ -100,13 +98,21 @@ async function returnBestFilms(array) {
     return filteredArray
 }
 
-const greatFilms = getFilmsContent(getLinksPages(baseURL))
 
-const bestFilm = returnBestFilm(greatFilms)
-const bestFilms = returnBestFilms(greatFilms)
+async function showImage() {
+    const greatFilms = await getFilmsContent(getLinksPages(baseURL))
+    const bestFilm = await returnBestFilm(greatFilms)
+    const bestFilms = await returnBestFilms(greatFilms)
+    const bestNinetiesFilms = await returnBestFilms(getFilmsContent(getLinksPages(ninetiesURL)))
+    const nicolasCageBestFilms = await returnBestFilms(getFilmsContent(getLinksPages(nicolasCageURL)))
+    const bestAdventureFilms = await returnBestFilms(getFilmsContent(getLinksPages(adventureURL)))
+    const films_array = await [bestFilms, bestNinetiesFilms, nicolasCageBestFilms, bestAdventureFilms]
+    for (value in films_array) {
+        const filmByCategory = films_array[value]
+        for (film in filmByCategory) {
+            document.getElementById("img"+value+"-"+film).src = filmByCategory[film]['image_url'];
+        }
+    }
+}
 
-const bestNinetiesFilms = returnBestFilms(getFilmsContent(getLinksPages(ninetiesURL)))
-
-const nicolasCageBestFilms = returnBestFilms(getFilmsContent(getLinksPages(nicolasCageURL)))
-
-const bestAdventureFilms = returnBestFilms(getFilmsContent(getLinksPages(adventureURL)))
+showImage()
