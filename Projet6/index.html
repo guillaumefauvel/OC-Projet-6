@@ -4,9 +4,7 @@
         <meta charset="UTF-8">
         <title>JustStreamIt!</title>
         <link rel="stylesheet" href="css/style.css">
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="javascript/data_gathering.js"></script>
-
     </head>
 
     <body>
@@ -23,12 +21,18 @@
         </header>
 
         <section class="best_film">
-            <h2><br>Meilleur film </h2>
-            <img id=imgCover src="./ressources/cover.jpg" alt="Describe Image" width="720" height="470">
+            <h2><br>Le film à l'affiche  </h2>
+
+            <div class="thumbnail">
+              <img id=cover src="./ressources/cover.jpg" alt="">
+              <div class="caption">
+                  <p>Le ali della libertà</p>
+              </div>
+          </div>
         </section>
 
         <section class="film_list">
-          <h2>Films les mieux nôtés</h2>
+          <h2>Films les mieux notés</h2>
           <div class="wrapper">
             <section id="section1">
               <a href="#section2" class="arrow__btn left-arrow">‹</a>
@@ -81,13 +85,12 @@
                   alt="Describe Image">
               </div>
               <a href="#section1" class="arrow__btn right-arrow">›</a>
-            </section>
-          
-          
-          </div>        </section> 
+            </section>         
+          </div>        
+        </section> 
 
       <section class="film_list">
-          <h2>Rétrospective - Les films les mieux nôtés des années 90</h2>
+          <h2>Rétrospective - Les films les mieux notés des années 90</h2>
           <div class="wrapper">
             <section id="section3">
               <a href="#section4" class="arrow__btn left-arrow">‹</a>

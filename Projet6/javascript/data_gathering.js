@@ -72,6 +72,7 @@ async function returnBestFilms(array) {
     // Return the best films 
     // Arg : A array of films (in json format)
     // Return : A sorted array of films (in json format)
+
     let numberOffilms = 7
     let arr = await array;
 
@@ -99,9 +100,8 @@ async function returnBestFilms(array) {
 
 
 async function showImage() {
-    //
-    //
-    //
+    // Replace the loading images by the correct film cover in the HTML file
+
     const greatFilms = await getFilmsContent(getLinksPages(baseURL))
     const bestFilm = await returnBestFilm(greatFilms)
     const bestFilms = await returnBestFilms(greatFilms)
