@@ -8,10 +8,9 @@ let alreadyShownFilm = []
 
 
 async function getLinksPages(url) {
-    // Get the different page of a research
+    // Get the different pages of a research
     // Arg : A root URL
-    // Return : An array of URL
-
+    // Return : An array of URLs
 
     let linkArray = []
     while (true) {
@@ -30,7 +29,7 @@ async function getLinksPages(url) {
 
 async function getFilmsContent(getLinksPages) {
     // Get the films json datas
-    // Arg : The getLinksPages function (containing array of URL)
+    // Arg : The getLinksPages function (containing array of URLs)
     // Return : An array containing films as json datas
 
     const linksArray = await getLinksPages
@@ -100,6 +99,9 @@ async function returnBestFilms(array) {
 
 
 async function showImage() {
+    //
+    //
+    //
     const greatFilms = await getFilmsContent(getLinksPages(baseURL))
     const bestFilm = await returnBestFilm(greatFilms)
     const bestFilms = await returnBestFilms(greatFilms)
