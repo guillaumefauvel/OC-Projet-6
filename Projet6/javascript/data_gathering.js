@@ -99,7 +99,7 @@ async function returnBestFilms(array) {
 }
 
 
-async function showImage() {
+/* async function showImage() {
     // Replace the loading images by the correct film cover in the HTML file
 
     const greatFilms = await getFilmsContent(getLinksPages(baseURL))
@@ -108,27 +108,114 @@ async function showImage() {
     const bestNinetiesFilms = await returnBestFilms(getFilmsContent(getLinksPages(ninetiesURL)))
     const nicolasCageBestFilms = await returnBestFilms(getFilmsContent(getLinksPages(nicolasCageURL)))
     const bestAdventureFilms = await returnBestFilms(getFilmsContent(getLinksPages(adventureURL)))
-    const films_array = await [bestFilms, bestNinetiesFilms, nicolasCageBestFilms, bestAdventureFilms]
+    const films_array = [bestFilms, bestNinetiesFilms, nicolasCageBestFilms, bestAdventureFilms]
     for (value in films_array) {
         const filmByCategory = films_array[value]
         for (film in filmByCategory) {
             document.getElementById("img"+value+"-"+film).src = filmByCategory[film]['image_url'];
         }
     }
+    let content = document.getElementById('modal1');
+    content.firstElementChild.firstElementChild.innerHTML = "Oui"
 }
 
-showImage()
+showImage() */
+
+
+async function getDatas() {
+    const greatFilms = await getFilmsContent(getLinksPages(baseURL))
+    const bestFilm = await returnBestFilm(greatFilms)
+    const bestFilms = await returnBestFilms(greatFilms)
+    const bestNinetiesFilms = await returnBestFilms(getFilmsContent(getLinksPages(ninetiesURL)))
+    const nicolasCageBestFilms = await returnBestFilms(getFilmsContent(getLinksPages(nicolasCageURL)))
+    const bestAdventureFilms = await returnBestFilms(getFilmsContent(getLinksPages(adventureURL)))
+    const films_array = [bestFilm, bestFilms, bestNinetiesFilms, nicolasCageBestFilms, bestAdventureFilms]
+
+    return films_array
+}
+
+async function showImage(getFunctionResult) {
+    filmsArray = await getFunctionResult;
+    for (value in filmsArray) {
+        const filmByCategory = filmsArray[value]
+        if (value != 0) {
+            for (film in filmByCategory) {
+                document.getElementById("img"+value+"-"+film).src = filmByCategory[film]['image_url'];
+                
+            }
+        }
+    }
+}
+
+async function addFilmsInfos(getFunctionResult) { 
+    filmsArray = await getFunctionResult;
+    let index = 0
+    for (value in filmsArray) {
+        const filmByCategory = filmsArray[value]
+        if (value == 0) {
+            let content = document.getElementById('modal'+index);
+            content.firstElementChild.firstElementChild.innerHTML = filmsArray[value]['title'];
+            let modalBody = document.getElementsByClassName('modal-body')[index];
+
+            index +=1
+            } 
+        else {
+            for (film in filmByCategory) {
+                let content = document.getElementById('modal'+index);
+                content.firstElementChild.firstElementChild.innerHTML = filmByCategory[film]['title'];
+                let modalBody = document.getElementsByClassName('modal-body')[index];
+                //test(filmByCategory[film])
+                generateTable(index, filmByCategory[film]);
+                index += 1;
+            }
+        }
+    }
+} 
+
+async function generateTable(tableIndex, data) {
+    data = await data
+    table = document.querySelectorAll("table")[tableIndex]
+    for (let element in data) {
+      console.log(element)  
+      let row = table.insertRow(0);
+      for (key in element) {
+        let cell = row.insertCell(0);
+        let text = document.createTextNode(element[key]);
+        cell.appendChild(text);
+      }
+    }
+  }
+
+
+
+async function test(data) {
+    data = await data
+    for (let x in data) {
+        console.log(x + ": "+ data[x])
+     }
+}
+
+
+
+
+
+
+
+
+
+
+let datas = getDatas()
+showImage(datas)
+addFilmsInfos(datas)
+
+
+
+
+
 
 const openModalButtons = document.querySelectorAll('[data-modal-target]')
 const closeModalButtons = document.querySelectorAll('[data-close-button]')
 const overlay = document.getElementById('overlay')
-
-
-
-/* var el = document.getElementById('overlayBtn');
-if(el){
-  el.addEventListener('click', swapper, false);
-} */
 
 openModalButtons.forEach(button => {
   button.addEventListener('click', () => {
