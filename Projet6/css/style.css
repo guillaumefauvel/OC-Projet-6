@@ -1,7 +1,11 @@
 header {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  padding: 1em;
   display: flex;
   justify-content: flex-end;
+  background-color: #422000;
+  background: linear-gradient(#313131, #000000);
+  height: 5vw;
 }
 
 ul {
@@ -9,7 +13,6 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333;
 }
 
 li {
@@ -22,27 +25,31 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  font-size: 1vw;
 }
 
 li a:hover {
-  background-color: #111;
+  color: #b90000;
 }
 
 .logo {
   position: absolute;
-  font-size: 2em;
+  font-size: 2vw;
   top: 15px;
   left: 15px;
+}
+.logo:hover {
+  color: #b90000;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #242020;
+  background-color: black;
   color: blanchedalmond;
 }
 
 h2 {
-  font-size: 1.5em;
+  font-size: 1.3vw;
   margin-left: 75px;
 }
 
@@ -79,7 +86,7 @@ h1 {
 }
 .wrapper section {
   width: 100%;
-  height: 25em;
+  height: 20vw;
   background-color: black;
   position: relative;
   display: grid;
@@ -112,7 +119,7 @@ h1 {
   position: absolute;
   color: #fff;
   text-decoration: none;
-  font-size: 6em;
+  font-size: 5vw;
   background: black;
   width: 80px;
   padding: 20px;
@@ -134,29 +141,34 @@ h1 {
 
 #img0-0 {
   display: block;
-  width: 50%;
+  width: 100%;
   border-radius: 1em;
 }
 
 .thumbnail {
   position: relative;
-  display: inline-block;
   margin-left: 4%;
+  display: flex;
 }
 
 .caption {
   position: absolute;
   top: 90%;
   left: 30%;
-  transform: translate(-20%, -50%);
+  transform: translate(20%, -50%);
   color: whitesmoke;
-  font-size: 2em;
+  font-size: 2vw;
   text-shadow: 0px 1px #000000;
   text-transform: uppercase;
   font-weight: bold;
   font-family: "Times New Roman", Times, serif;
   -webkit-text-stroke-width: 0.03em;
   -webkit-text-stroke-color: black;
+}
+
+.container {
+  position: relative;
+  width: 50%;
 }
 
 *, *::after, *::before {
@@ -176,6 +188,7 @@ h1 {
   width: 500px;
   max-width: 100%;
   color: #000;
+  padding: 1.5em;
 }
 
 .modal.active {
@@ -191,7 +204,7 @@ h1 {
 }
 
 .modal-header .title {
-  font-size: 1.25rem;
+  font-size: 1.25vw;
   font-weight: bold;
 }
 
@@ -200,7 +213,7 @@ h1 {
   border: none;
   outline: none;
   background: none;
-  font-size: 1.25rem;
+  font-size: 1.25vw;
   font-weight: bold;
 }
 
@@ -216,7 +229,7 @@ h1 {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   pointer-events: none;
 }
 
@@ -230,12 +243,20 @@ td:nth-child(1) {
   text-transform: capitalize;
 }
 
-td {
-  word-wrap: break-word;
-  /* All browsers since IE 5.5+ */
-  overflow-wrap: break-word;
-  /* Renamed property in CSS3 draft spec */
-  width: 50%;
+footer {
+  justify-content: center;
+  display: flex;
+  align-items: center;
+}
+footer a {
+  padding: 5em 2em;
+  list-style-type: none;
+  color: white;
+  overflow: hidden;
+  text-decoration: none;
+}
+footer a:hover {
+  color: yellow;
 }
 
 /*# sourceMappingURL=style.css.map */
