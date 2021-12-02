@@ -175,13 +175,21 @@ async function addFilmsInfos(getFunctionResult) {
 async function generateTable(tableIndex, data) {
     data = await data
     table = document.querySelectorAll("table")[tableIndex]
+    unwantedElements = ["id","url","imdb_url","title","image_url"]
     for (let element in data) {
-      console.log(element)  
-      let row = table.insertRow(0);
-      for (key in element) {
-        let cell = row.insertCell(0);
-        let text = document.createTextNode(element[key]);
-        cell.appendChild(text);
+      if (!unwantedElements.includes(element)) {
+        let tableKey = element;
+        let tableValue = data[element];
+        let row = table.insertRow();
+  
+        let cell1 = row.insertCell();
+        let cell2 = row.insertCell();
+  
+        let text1 = document.createTextNode(tableKey);
+        let text2 = document.createTextNode(tableValue);
+        
+        cell1.appendChild(text1);
+        cell2.appendChild(text2);
       }
     }
   }

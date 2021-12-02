@@ -90,11 +90,11 @@ h1 {
   padding: 40px 20px;
   transition: 250ms all;
   display: flex;
-}
-.wrapper section .item:hover {
-  margin: 0 40px;
-  transform: scale(1.2);
-  -webkit-transform: scale(1.2);
+  /*       &:hover { 
+          margin: 0 40px;
+          transform: scale(1.2);
+          -webkit-transform: scale(1.2);
+        } */
 }
 .wrapper section .item .heading {
   position: absolute;
@@ -164,7 +164,7 @@ h1 {
 }
 
 .modal {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
@@ -172,9 +172,9 @@ h1 {
   border: 1px solid black;
   border-radius: 10px;
   z-index: 10;
-  background-color: white;
+  background-color: #cec6c6;
   width: 500px;
-  max-width: 80%;
+  max-width: 100%;
   color: #000;
 }
 
@@ -223,6 +223,19 @@ h1 {
 #overlay.active {
   opacity: 1;
   pointer-events: all;
+}
+
+td:nth-child(1) {
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+td {
+  word-wrap: break-word;
+  /* All browsers since IE 5.5+ */
+  overflow-wrap: break-word;
+  /* Renamed property in CSS3 draft spec */
+  width: 50%;
 }
 
 /*# sourceMappingURL=style.css.map */
