@@ -42,15 +42,10 @@ li a:hover {
   color: #b90000;
 }
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: black;
-  color: blanchedalmond;
-}
-
 h2 {
-  font-size: 1.3vw;
+  font-size: 1.5vw;
   margin-left: 75px;
+  color: burlywood;
 }
 
 html {
@@ -59,7 +54,7 @@ html {
 
 body {
   margin: 0;
-  background-color: #000;
+  background-color: black;
   font-family: Arial;
   -ms-overflow-style: none;
   /* IE and Edge */
@@ -81,7 +76,7 @@ h1 {
   grid-template-columns: repeat(3, 100%);
   overflow: hidden;
   scroll-behavior: smooth;
-  margin: 50px 0;
+  margin: 30px 0;
   margin-left: 3%;
 }
 .wrapper section {
@@ -93,14 +88,15 @@ h1 {
   grid-template-columns: repeat(4, auto);
 }
 .wrapper section .item {
+  height: 20vw;
   position: relative;
-  padding: 40px 20px;
+  padding: 5px 20px;
   transition: 250ms all;
   display: flex;
   /*       &:hover { 
           margin: 0 40px;
-          transform: scale(1.2);
-          -webkit-transform: scale(1.2);
+          transform: scale(1);
+          -webkit-transform: scale(1);
         } */
 }
 .wrapper section .item .heading {
@@ -245,6 +241,7 @@ td:nth-child(1) {
 
 footer {
   justify-content: center;
+  font-size: 1vw;
   display: flex;
   align-items: center;
 }
