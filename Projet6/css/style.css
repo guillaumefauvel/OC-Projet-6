@@ -37,6 +37,7 @@ li a:hover {
   font-size: 2vw;
   top: 15px;
   left: 15px;
+  color: white;
 }
 .logo:hover {
   color: #b90000;
@@ -200,8 +201,8 @@ h1 {
 }
 
 .modal-header .title {
-  font-size: 1.25vw;
   font-weight: bold;
+  font-size: 1.5em;
 }
 
 .modal-header .close-button {
@@ -209,7 +210,6 @@ h1 {
   border: none;
   outline: none;
   background: none;
-  font-size: 1.25vw;
   font-weight: bold;
 }
 
