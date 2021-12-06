@@ -1,0 +1,37 @@
+
+
+
+#img0-0 {
+    display: block;
+    width: 100%;
+    border-radius: 1em;
+  }
+  
+  
+  .thumbnail {
+    position: relative;
+    margin-left: 4%;
+    display: flex;
+  }
+  
+  .caption {
+    position: absolute;
+    top: 90%;
+    left: 30%;
+    transform: translate( 20%, -50% );
+    color: whitesmoke;
+    font-size: 2vw;
+    text-shadow: 0px 1px #000000;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-family: "Times New Roman", Times, serif;
+    -webkit-text-stroke-width: 0.03em;
+    -webkit-text-stroke-color: black;
+  }
+  
+  
+  .container {
+    position: relative;
+    width: 50%;
+  }
+  
