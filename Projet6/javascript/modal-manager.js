@@ -1,3 +1,5 @@
+// Hold the logic behind the modal 
+//
 
 
 const openModalButtons = document.querySelectorAll('[data-modal-target]')

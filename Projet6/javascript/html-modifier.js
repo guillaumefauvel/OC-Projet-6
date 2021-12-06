@@ -1,4 +1,6 @@
- 
+// Modify the html core content
+//
+
 
 export async function showImage(getFunctionResult) {
 // Modify films covers

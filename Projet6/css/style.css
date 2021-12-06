@@ -1,10 +1,10 @@
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(3, 100%);
+  grid-template-columns: repeat(4, 100%);
   overflow: hidden;
   scroll-behavior: smooth;
   margin: 30px 0;
-  margin-left: 3%;
+  margin-left: 5%;
 }
 .wrapper section {
   width: 100%;
@@ -17,44 +17,28 @@
 .wrapper section .item {
   height: 20vw;
   position: relative;
-  padding: 5px 20px;
+  padding: 1vw 4vw;
   transition: 250ms all;
   display: flex;
-}
-.wrapper section .item .heading {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  color: #fff;
-}
-.wrapper section .item .duration {
-  position: absolute;
-  bottom: 0;
-  left: 20px;
-  color: #fff;
 }
 .wrapper section .arrow__btn {
   position: absolute;
   color: #fff;
   text-decoration: none;
-  font-size: 5vw;
-  background: black;
+  font-size: 4vw;
+  background: rgba(0, 0, 0, 0);
   width: 80px;
   padding: 20px;
   text-align: center;
   z-index: 1;
 }
 .wrapper section .left-arrow {
-  top: 0;
-  bottom: 0;
-  left: 0;
-  background: linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, black 100%);
+  bottom: 6vw;
+  left: -1vw;
 }
 .wrapper section .right-arrow {
-  top: 0;
-  bottom: 0;
+  bottom: 6vw;
   right: 0;
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, black 100%);
 }
 
 *, *::after, *::before {
@@ -100,6 +84,7 @@
   outline: none;
   background: none;
   font-weight: bold;
+  font-size: 2em;
 }
 
 .modal-body {

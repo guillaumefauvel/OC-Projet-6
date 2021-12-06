@@ -1,5 +1,6 @@
+// Get and sort the API datas
+//
 
-//URL TO MODIFY
 const baseURL = "http://localhost:8000/api/v1/titles/?imdb_score=&imdb_score_min=9.3" 
 const ninetiesURL = "http://localhost:8000/api/v1/titles/?min_year=1990&max_year=1999&imdb_score=&imdb_score_min=8.8"
 const nicolasCageURL = "http://localhost:8000/api/v1/titles/?imdb_score=&imdb_score_min=7.3&actor=Nicolas+Cage&actor_contains="
