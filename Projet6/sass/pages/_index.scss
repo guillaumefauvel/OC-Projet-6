@@ -8,30 +8,36 @@
   }
   
   
-  .thumbnail {
-    position: relative;
-    margin-left: 4%;
-    display: flex;
-  }
+.thumbnail {
+  position: relative;
+  display: flex;
+
+}
+
+.caption {
+  position: absolute;
+  top: 90%;
+  left: 40%;
+  transform: translate( 20%, -50% );
+  color: whitesmoke;
+  font-size: 2vw;
+  text-shadow: 0px 1px #000000;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-family: "Times New Roman", Times, serif;
+  -webkit-text-stroke-width: 0.03em;
+  -webkit-text-stroke-color: black;
   
-  .caption {
-    position: absolute;
-    top: 90%;
-    left: 30%;
-    transform: translate( 20%, -50% );
-    color: whitesmoke;
-    font-size: 2vw;
-    text-shadow: 0px 1px #000000;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-family: "Times New Roman", Times, serif;
-    -webkit-text-stroke-width: 0.03em;
-    -webkit-text-stroke-color: black;
-  }
-  
-  
-  .container {
-    position: relative;
-    width: 50%;
-  }
-  
+}
+
+
+.best_film {
+  position: relative;
+  width: 50%;
+  margin-left: 20%;
+}
+
+#BestFilmTitle {
+  margin-left: 0;
+  text-align: center;
+}

@@ -5,13 +5,15 @@
         <title>JustStreamIt!</title>
         <link rel="stylesheet" href="css/style.css">
         <script type="module" src="javascript/main.js"></script>
+        <link rel="preload" href="projet6/ressources/fonts/Cinzel/Cinzel-Bold.woff2" as="font" type="font/woff2" crossorigin>
+
     </head>
 
     <body>
       
         <header>
             <div>
-                <a class="logo"> JustStreamIt </a>
+                <a class="logo"> JustStream.It </a>
             </div>
             <nav>
                 <ul>
@@ -23,7 +25,7 @@
         </header>
 
         <section class="best_film">
-            <h2><br>Le film à l'affiche</h2>
+            <h2 id="BestFilmTitle"><br>Le film à l'affiche</h2>
             <div class="thumbnail">
               <div class="container">
                 <input data-modal-target="#modal0" type="image" src="./ressources/cover.jpg" name="saveForm" class="btTxt submit" id="img0-0" alt="Image de courverture"/>
@@ -152,7 +154,7 @@
         </section> 
 
       <section class="film_list">
-          <h2>Rétrospective - Les films les mieux notés des années 90</h2>
+          <h2><span>Rétrospective</span> - Les films les mieux notés des années 90</h2>
           <div class="wrapper">
             <section id="section3">
               <a href="#section4" class="arrow__btn left-arrow">‹</a>
@@ -258,7 +260,7 @@
         </section> 
 
       <section class="film_list">
-          <h2>Rétrospective - Les meilleurs films avec Nicolas Cage</h2>
+          <h2><span>Rétrospective</span> - Les meilleurs films avec Nicolas Cage</h2>
           <div class="wrapper">
             <section id="section5">
               <a href="#section6" class="arrow__btn left-arrow">‹</a>
