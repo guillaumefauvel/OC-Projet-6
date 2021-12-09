@@ -7,14 +7,6 @@
   font-display: swap;
 }
 @font-face {
-  font-family: "Rammetto One";
-  src: url("../ressources/fonts/rammeto_one/RammettoOne-Regular.eot");
-  src: url("../ressources/fonts/rammeto_one/RammettoOne-Regular.eot?#iefix") format("embedded-opentype"), url("../ressources/fonts/rammeto_one/RammettoOne-Regular.woff2") format("woff2"), url("../ressources/fonts/rammeto_one/RammettoOne-Regular.woff") format("woff"), url("../ressources/fonts/rammeto_one/RammettoOne-Regular.ttf") format("truetype"), url("../ressources/fonts/rammeto_one/RammettoOne-Regular.svg#RammettoOne-Regular") format("svg");
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
   font-family: "Bangers";
   src: url("../ressources/fonts/bangers/Bangers-Regular.eot");
   src: url("../ressources/fonts/bangers/Bangers-Regular.eot?#iefix") format("embedded-opentype"), url("../ressources/fonts/bangers/Bangers-Regular.woff2") format("woff2"), url("../ressources/fonts/bangers/Bangers-Regular.woff") format("woff"), url("../ressources/fonts/bangers/Bangers-Regular.ttf") format("truetype"), url("../ressources/fonts/bangers/Bangers-Regular.svg#Bangers-Regular") format("svg");
@@ -83,6 +75,7 @@
   max-width: 100%;
   color: #000;
   padding: 1.5em;
+  font-family: "Arial";
 }
 
 .modal.active {
@@ -138,7 +131,7 @@ td:nth-child(1) {
 }
 
 header {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Cinzel";
   padding: 1em;
   display: flex;
   justify-content: flex-end;
@@ -164,9 +157,7 @@ li a {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 1vw;
-  font-family: "Cinzel";
 }
-
 li a:hover {
   color: #b90000;
 }
@@ -187,7 +178,6 @@ h2 {
   font-size: 1.5vw;
   margin-left: 75px;
   color: burlywood;
-  font-family: "Cinzel";
 }
 h2 span {
   text-decoration: underline;
@@ -200,11 +190,9 @@ html {
 body {
   margin: 0;
   background-color: black;
-  font-family: Arial;
+  font-family: "Cinzel";
   -ms-overflow-style: none;
-  /* IE and Edge */
   scrollbar-width: none;
-  /* Firefox */
 }
 
 body::-webkit-scrollbar {
@@ -237,7 +225,6 @@ footer a:hover {
 
 .thumbnail {
   position: relative;
-  display: flex;
 }
 
 .caption {

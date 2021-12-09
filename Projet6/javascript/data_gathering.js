@@ -8,8 +8,7 @@ const adventureURL = "http://localhost:8000/api/v1/titles/?genre=&genre_contains
 
 let alreadyShownFilm = []
 
-
-export async function getLinksPages(url) {
+async function getLinksPages(url) {
     // Get the different pages of a research
     // Arg : A root URL
     // Return : An array of URLs
@@ -29,7 +28,7 @@ export async function getLinksPages(url) {
  }
 }
 
-export async function getFilmsContent(getLinksPages) {
+async function getFilmsContent(getLinksPages) {
     // Get the films json datas
     // Arg : The getLinksPages function (containing array of URLs)
     // Return : An array containing films as json datas
@@ -48,7 +47,7 @@ export async function getFilmsContent(getLinksPages) {
     return ContentArray
 }
 
-export async function returnBestFilm(getFilmsContent) {
+async function returnBestFilm(getFilmsContent) {
     // Return the best film based on two criteria, the
     // imdb score and the number of votes
     // Arg : The getfilmsContent function ( Array of films in json format)
@@ -70,7 +69,7 @@ export async function returnBestFilm(getFilmsContent) {
 }
 
 
-export async function returnBestFilms(array) {  
+async function returnBestFilms(array) {  
     // Return the best films 
     // Arg : A array of films (in json format)
     // Return : A sorted array of films (in json format)
@@ -104,6 +103,7 @@ export async function returnBestFilms(array) {
 export async function getDatas() {
     // Return all the chosen datas
     // Return : An array of Films datas in JSON format
+    
     const greatFilms = await getFilmsContent(getLinksPages(baseURL))
     const bestFilm = await returnBestFilm(greatFilms)
     const bestFilms = await returnBestFilms(greatFilms)
