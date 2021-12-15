@@ -1,6 +1,6 @@
 import { getDatas } from "./data_gathering.js";
-import { showImage, addFilmsInfos } from "./html-modifier.js";
-import { listener } from "./modal-manager.js";
+import { showImage, addFilmsInfos } from "./html_modifier.js";
+import { listener } from "./modal_manager.js";
 
 
 listener()
