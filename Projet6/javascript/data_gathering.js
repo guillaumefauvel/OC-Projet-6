@@ -6,7 +6,9 @@ const ninetiesURL = "http://localhost:8000/api/v1/titles/?min_year=1990&max_year
 const nicolasCageURL = "http://localhost:8000/api/v1/titles/?imdb_score=&imdb_score_min=7.3&actor=Nicolas+Cage&actor_contains="
 const adventureURL = "http://localhost:8000/api/v1/titles/?genre=&genre_contains=adventure&imdb_score=&imdb_score_min=8.6"
 
+
 let alreadyShownFilm = []
+
 
 async function getLinksPages(url) {
     // Get the different pages of a research
@@ -28,6 +30,7 @@ async function getLinksPages(url) {
  }
 }
 
+
 async function getFilmsContent(getLinksPages) {
     // Get the films json datas
     // Arg : The getLinksPages function (containing array of URLs)
@@ -47,11 +50,12 @@ async function getFilmsContent(getLinksPages) {
     return ContentArray
 }
 
+
 async function returnBestFilm(getFilmsContent) {
     // Return the best film based on two criteria, the
     // imdb score and the number of votes
     // Arg : The getfilmsContent function ( Array of films in json format)
-    // Return : The best film, format : json
+    // Return : The best film (in json format)
 
     let filmsArray = await getFilmsContent
     let bestFilm = filmsArray[0]
@@ -102,7 +106,7 @@ async function returnBestFilms(array) {
 
 export async function getDatas() {
     // Return all the chosen datas
-    // Return : An array of Films datas in JSON format
+    // Return : An array of array that contains films datas in JSON format
     
     const greatFilms = await getFilmsContent(getLinksPages(baseURL))
     const bestFilm = await returnBestFilm(greatFilms)

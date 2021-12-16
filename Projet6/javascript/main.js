@@ -5,10 +5,12 @@ import { listener } from "./modal_manager.js";
 
 listener()
 
+
 async function launch() {
     let datas = await (getDatas());
     showImage(datas);
     addFilmsInfos(datas);
 }
+
 
 launch()

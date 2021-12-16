@@ -20,6 +20,7 @@ function closeModal(modal) {
   overlay.classList.remove('active')
 }
   
+
 export function listener() {
   // Query the user action in order to open or close a modal
     openModalButtons.forEach(button => {
