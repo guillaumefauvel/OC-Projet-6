@@ -1,6 +1,7 @@
 # Readme - OC-Projet-6 - JustStreamIt
 
 Le site JustStreamIt récupère et met en forme plusieurs listes de films grâce à l'API [OCMovies](https://github.com/OpenClassrooms-Student-Center/OCMovies-API-EN-FR).
+Téléchargez l'API et déplacez son contenu décompressé à l'intérieur du dossier OCMovies-API-EN-FR
 
 ### Lancement du serveur  :
 
