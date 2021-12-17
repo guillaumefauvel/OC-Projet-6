@@ -18,8 +18,8 @@ async function getLinksPages(url) {
     let linkArray = []
     while (true) {
         if (Boolean(url) == true) {
-        const Res= fetch(url);
-        const response= await Res;
+        const res = fetch(url);
+        const response = await res;
         const json = await response.json();
         linkArray.push(url)
         url = json["next"]
@@ -37,17 +37,17 @@ async function getFilmsContent(getLinksPages) {
     // Return : An array containing films as json datas
 
     const linksArray = await getLinksPages
-    let ContentArray = []
+    let contentArray = []
 
     for (let page in linksArray) {
-        const Res= fetch(linksArray[page]);
-        const response= await Res;
+        const res = fetch(linksArray[page]);
+        const response = await res;
         const json = await response.json()
         for (let film in json["results"]) {
-            ContentArray.push(json["results"][film])
+            contentArray.push(json["results"][film])
         }
     }
-    return ContentArray
+    return contentArray
 }
 
 
